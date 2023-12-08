@@ -39,12 +39,15 @@ power:
 	#now we'll reserve 2 words for local variables	
 	subl $8, %esp
 	#we'll store current power in -8 (%ebp) and current result in -4 (%ebp)
-	movl 8(%ebp), -8(%ebp) 
-	movl 12(%ebp), -4(%ebp) #stack looks like this rn: 3, 2, old bp, retun addr, 3, 2
+	movl 8(%ebp),%ebx
+	movl %ebx, -8(%ebp) 
+
+	movl 12(%ebp),%ebx
+	movl %ebx, -4(%ebp) #stack looks like this rn: 3, 2, old bp, retun addr, 3, 2
 	jmp power_loop_start
 
 	power_loop_start:
-		cmpl -8(%ebp), $1
+		cmpl $1,-8(%ebp)
 		je power_loop_end
 
 		#prepare to call multiply
@@ -54,7 +57,8 @@ power:
 		addl $8, %esp #remove the parameters of multiply from the top of stack
 		#result of multiply is in %eax
 		movl %eax, -4(%ebp)
-		subl $1, -8(%esp)
+		subl $1, -8(%ebp)
+		jmp power_loop_start
 	
 	power_loop_end:
 		movl -4(%ebp), %eax #stores the result in %eax register
