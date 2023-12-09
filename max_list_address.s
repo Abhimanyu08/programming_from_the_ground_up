@@ -17,7 +17,7 @@ movl $list , %eax #we move the starting address into the %eax register
 movl %eax, %edx
 addl $28, %edx #we'll keep ending address inside the %edx. in this case we'll stop after having read 7 longs (4 bytes each) starting at list
 
-movl (%eax), %ecx  # we keep track of current list[index] in %ecx.this is indexed addressing mode. One thing I noticed is you can't just say list(,$0,4), your index needs to be in a register.
+movl (%eax), %ecx  #this is indirect addressing mode
 movl %ecx, %ebx # We keep track of maximum till now in %ebx. It's the list's first item at the start
 
 start_loop:
