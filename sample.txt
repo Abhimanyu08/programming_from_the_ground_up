@@ -1,1 +1,1 @@
-This is just a sample text to test the first file manipulation program I've written in assembly. Let's see how it goes
+This is just a sample text to test the first file manipulation program I've written in assembly. Let's see how it goes. It should do nothing with numbers 1,2,3
