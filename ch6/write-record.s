@@ -1,7 +1,7 @@
 #This file includes two functions which can read and write a record to a file
 # They take the following arguments
-# - The address of the buffer where the record should be read to
-# - The file descriptor from which to read or write
+# - The address of the buffer from where to take the record
+# - The file descriptor of file to which to write the record
 .include "record-def.s"
 .include "linux.s"
 
